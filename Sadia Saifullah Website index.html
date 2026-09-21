@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Portal</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F1F8F2;
+    color: #222;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    padding: 0 16px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0 12px;
+}
+
+/* Header */
+.portal-header {
+    background: linear-gradient(135deg, #2E7D32, #43A047);
+    color: white;
+    padding: 28px 16px 20px;
+    text-align: center;
+    border-bottom: 5px solid #A5D6A7;
+}
+
+.portal-header h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    letter-spacing: 1px;
+}
+
+.portal-header h2 {
+    margin: 6px 0 2px;
+    font-weight: 400;
+    font-size: 1.15rem;
+}
+
+.portal-header h3 {
+    margin: 0;
+    font-weight: 300;
+    font-size: .95rem;
+}
+
+/* Navbar */
+.portal-navbar {
+    background: #2E7D32;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 1rem;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    padding-left: 4px;
+}
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #F1FFF3;
+    transition: .2s;
+}
+
+.nav-link:hover {
+    background: #A5D6A7;
+    color: #2E7D32;
+}
+
+/* Content */
+.content {
+    padding: 24px 16px 60px;
+}
+
+section {
+    margin-bottom: 34px;
+}
+
+.section-title {
+    color: #2E7D32;
+    border-left: 5px solid #A5D6A7;
+    padding-left: 10px;
+    margin-bottom: 16px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border: 1px solid #DCE8DD;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.card-body {
+    padding: 1.1rem 1.25rem;
+}
+
+.card-title {
+    margin: 0 0 .5rem;
+    font-weight: 700;
+}
+
+/* Profile */
+.profile-card .card-body {
+    text-align: center;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 4px solid #A5D6A7;
+    margin-bottom: 12px;
+}
+
+.profile-card .card-title {
+    color: #2E7D32;
+    font-size: 1.3rem;
+}
+
+.profile-fact {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 4px;
+    border-bottom: 1px dashed #e0e0e0;
+    font-size: .92rem;
+}
+
+.profile-fact span:first-child {
+    font-weight: 600;
+    color: #555;
+}
+
+/* Table */
+.table-wrap {
+    overflow-x: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: .6rem .75rem;
+    border: 1px solid #DCE8DD;
+}
+
+.course-table thead {
+    background: #2E7D32;
+    color: white;
+}
+
+.course-table tbody tr:nth-child(even) {
+    background: #F7FCF7;
+}
+
+.course-table tbody tr:hover {
+    background: #E8F5E9;
+}
+
+/* Course Cards */
+.course-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.course-card {
+    height: 100%;
+}
+
+.course-card .card-title {
+    color: #2E7D32;
+    font-size: 1.05rem;
+}
+
+.badge {
+    display: inline-block;
+    background: #A5D6A7;
+    color: #1B5E20;
+    padding: .2rem .55rem;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+/* Form */
+.reg-form {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .3rem;
+}
+
+.form-control,
+.form-select,
+textarea {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #FAFFFA;
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #43A047;
+    box-shadow: 0 0 0 .2rem rgba(67,160,71,.2);
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 6px 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: .55rem 1.3rem;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-register {
+    background: #2E7D32;
+    color: white;
+    box-shadow: 0 3px 0 #1B5E20;
+}
+
+.btn-register:hover {
+    background: #43A047;
+}
+
+.btn-clear {
+    background: white;
+    color: #2E7D32;
+    border: 2px solid #2E7D32;
+    margin-left: 10px;
+}
+
+.btn-clear:hover {
+    background: #fdecec;
+    color: #b02a2a;
+    border-color: #b02a2a;
+}
+
+/* Alert */
+.alert {
+    padding: .9rem 1.1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.alert-success {
+    background: #E8F5E9;
+    color: #1B5E20;
+    border: 1px solid #A5D6A7;
+}
+
+/* Links */
+.site-link {
+    color: #43A047;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 16px;
+    color: #777;
+    font-size: .85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .course-cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .portal-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .portal-header h2 {
+        font-size: 1rem;
+    }
+
+    .content {
+        padding: 16px 10px 40px;
+    }
+
+    .btn-clear {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-photo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .course-cards-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="portal-header">
+    <h1>Student Portal</h1>
+    <h2>Lahore Garrison University</h2>
+    <h3>Department of Computer Science</h3>
+</header>
+
+<!-- Navigation -->
+<nav class="portal-navbar">
+
+    <a class="navbar-brand" href="#">LGU Portal</a>
+
+    <ul class="navbar-nav">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#profile">Profile</a></li>
+        <li><a class="nav-link" href="#courses">Courses</a></li>
+        <li><a class="nav-link" href="#registration">Registration</a></li>
+        <li><a class="nav-link" href="#announcements">Announcements</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+<!-- Main Content -->
+<div class="content container">
+
+    <!-- Home -->
+    <section id="home">
+        <h2 class="section-title">Welcome</h2>
+
+        <p>
+            Welcome to the Student Portal. This portal allows students
+            to view their profile, courses, and registration information.
+        </p>
+    </section>
+
+
+    <div class="row">
+
+        <!-- Student Profile -->
+        <div class="col-md-6">
+
+            <section id="profile">
+
+                <h2 class="section-title">Student Profile</h2>
+
+                <div class="card profile-card">
+
+                    <div class="card-body">
+
+                        <!-- Profile Image -->
+                        <img
+                            src="https://st3.depositphotos.com/1258191/16429/i/1600/depositphotos_164297662-stock-photo-young-female-college-student-portrait.jpg"
+                            alt="Student Profile Picture"
+                            class="profile-photo"
+                        >
+
+                        <h3 class="card-title">
+                            Sadia Saifullah
+                        </h3>
+
+                        <p style="color:#777;">
+                            BS Computer Science · Section F
+                        </p>
+
+                        <div class="profile-fact">
+                            <span>Roll No</span>
+                            <span>396</span>
+                        </div>
+
+                        <div class="profile-fact">
+                            <span>Department</span>
+                            <span>Computer Science</span>
+                        </div>
+
+                        <div class="profile-fact">
+                            <span>Subject</span>
+                            <span>HCI</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- Courses -->
+        <div class="col-md-6">
+
+            <section id="courses">
+
+                <h2 class="section-title">
+                    Registered Courses
+                </h2>
+
+                <div class="table-wrap">
+
+                    <table class="table course-table">
+
+                        <caption style="caption-side:top;padding:10px;font-weight:600;color:#2E7D32;">
+                            Student Course Information
+                        </caption>
+
+                        <thead>
+                            <tr>
+                                <th>Course Code</th>
+                                <th>Course Name</th>
+                                <th>Credit Hours</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>CS-301</td>
+                                <td>Data Structures</td>
+                                <td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>CS-302</td>
+                                <td>Database Systems</td>
+                                <td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>CS-303</td>
+                                <td>Computer Networks</td>
+                                <td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>CS-304</td>
+                                <td>Human Computer Interaction</td>
+                                <td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>CS-305</td>
+                                <td>Operating Systems</td>
+                                <td>3</td>
+                            </tr>
+
+                            <tr>
+                                <td>CS-306</td>
+                                <td>Software Engineering</td>
+                                <td>3</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- Course Cards -->
+                <div class="course-cards-grid">
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-301</span>
+                            <h4 class="card-title">Data Structures</h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-302</span>
+                            <h4 class="card-title">Database Systems</h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-303</span>
+                            <h4 class="card-title">Computer Networks</h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-304</span>
+                            <h4 class="card-title">
+                                Human Computer Interaction
+                            </h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-305</span>
+                            <h4 class="card-title">Operating Systems</h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                    <div class="card course-card">
+                        <div class="card-body">
+                            <span class="badge">CS-306</span>
+                            <h4 class="card-title">
+                                Software Engineering
+                            </h4>
+                            <p>Credit Hours: 3</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- Registration -->
+    <section id="registration">
+
+        <h2 class="section-title">
+            Registration Form
+        </h2>
+
+        <form class="reg-form" id="regForm">
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="fullname"
+                    placeholder="Enter your full name"
+                >
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Gender
+                </label>
+
+                <div class="radio-group">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="male"
+                        >
+                        Male
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="female"
+                        >
+                        Female
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            value="other"
+                        >
+                        Other
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Date of Birth
+                </label>
+
+                <input
+                    type="date"
+                    class="form-control"
+                    id="dob"
+                >
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Select Department
+                </label>
+
+                <select class="form-select" id="department">
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                    <option value="cs">
+                        Computer Science
+                    </option>
+
+                    <option value="ee">
+                        Electrical Engineering
+                    </option>
+
+                    <option value="me">
+                        Mechanical Engineering
+                    </option>
+
+                    <option value="math">
+                        Mathematics
+                    </option>
+
+                    <option value="physics">
+                        Physics
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Enter your phone number"
+                >
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Address
+                </label>
+
+                <textarea
+                    class="form-control"
+                    rows="4"
+                    placeholder="Enter your address"
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn btn-register"
+            >
+                Register
+            </button>
+
+            <button
+                type="reset"
+                class="btn btn-clear"
+                id="clearBtn"
+            >
+                Clear Form
+            </button>
+
+
+            <div
+                id="formAlert"
+                class="alert alert-success"
+                style="display:none;"
+            >
+                Registered successfully!
+            </div>
+
+        </form>
+
+
+        <p style="margin-top:16px;">
+            Visit our website:
+            <a
+                class="site-link"
+                href="https://www.lgu.edu.pk"
+                target="_blank"
+            >
+                www.lgu.edu.pk
+            </a>
+        </p>
+
+    </section>
+
+
+    <!-- Announcements -->
+    <section id="announcements">
+
+        <h2 class="section-title">
+            Announcements
+        </h2>
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <ul>
+
+                    <li>
+                        Mid-term examinations will start from
+                        20th October 2026.
+                    </li>
+
+                    <li>
+                        Course registration deadline has been extended
+                        to 15th September 2026.
+                    </li>
+
+                    <li>
+                        The department seminar on
+                        "Emerging Trends in AI" will be held on
+                        25th September 2026.
+                    </li>
+
+                    <li>
+                        Semester fee submission last date is
+                        30th September 2026.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- Footer -->
+<footer id="contact">
+
+    Lahore Garrison University
+    &middot;
+    Department of Computer Science
+    &middot;
+    Student Portal
+
+</footer>
+
+
+<!-- JavaScript -->
+<script>
+
+    // Registration Form
+    var form = document.getElementById("regForm");
+
+    var alertBox = document.getElementById("formAlert");
+
+    form.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        alertBox.style.display = "block";
+
+    });
+
+
+    // Clear Button
+    document.getElementById("clearBtn").addEventListener(
+        "click",
+        function() {
+
+            alertBox.style.display = "none";
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
